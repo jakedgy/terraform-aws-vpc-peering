@@ -58,7 +58,7 @@ resource "aws_route" "requestor" {
 }
 
 # Create routes from requestor to acceptor
-resource "aws_route" "requestor" {
+resource "aws_route" "requestor-explicit-cidrs" {
   count                     = module.this.enabled && length(var.acceptor_cidr_block_associations) > 0 ? length(distinct(sort(data.aws_route_tables.requestor.0.ids))) * length(var.acceptor_cidr_block_associations) : 0
   route_table_id            = element(distinct(sort(data.aws_route_tables.requestor.0.ids)), ceil(count.index / length(var.acceptor_cidr_block_associations)))
   destination_cidr_block    = var.acceptor_cidr_block_associations[count.index % length(var.acceptor_cidr_block_associations)]
