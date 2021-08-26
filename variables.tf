@@ -16,6 +16,12 @@ variable "requestor_route_table_tags" {
   default     = {}
 }
 
+variable "requestor_cidr_block_associations" {
+  type        = list(string)
+  description = "Only add these requestor VPC CIDR block associations to acceptor VPC route tables"
+  default     = []
+}
+
 variable "acceptor_vpc_id" {
   type        = string
   description = "Acceptor VPC ID"
