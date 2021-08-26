@@ -37,7 +37,7 @@ variable "acceptor_route_table_tags" {
 variable "acceptor_cidr_block_associations" {
   type        = list(string)
   description = "Only add these acceptor VPC CIDR block associations to reqeustor VPC route tables"
-  default     = {}
+  default     = []
 }
 
 variable "auto_accept" {
